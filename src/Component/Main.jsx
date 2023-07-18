@@ -7,6 +7,8 @@ import Menu1 from "../Routes/Menu1";
 import Menu1_1 from "../Routes/Menu1_1";
 import Menu1_2 from "../Routes/Menu1_2";
 import Menu1_3 from "../Routes/Menu1_3";
+import Menu1_1_1 from "../Routes/Menu1_1_1";
+import Menu1_1_2 from "../Routes/Menu1_1_2";
 import Home from "../Routes/Home";
 
 const Main = ({ path, setPath, testData }) => {
@@ -27,7 +29,7 @@ const Main = ({ path, setPath, testData }) => {
           }
         />
         <Route
-          path={"/menu1/Menu1Nav1"}
+          path={"/menu1/Menu1Depth1"}
           element={
             <>
               <Nav1 path={path} setPath={setPath} testData={testData} />
@@ -36,7 +38,7 @@ const Main = ({ path, setPath, testData }) => {
           }
         />
         <Route
-          path={"/menu1/Menu1Nav2"}
+          path={"/menu1/Menu1Depth2"}
           element={
             <>
               <Nav1 path={path} setPath={setPath} testData={testData} />
@@ -45,11 +47,38 @@ const Main = ({ path, setPath, testData }) => {
           }
         />
         <Route
-          path={"/menu1/Menu1Nav3"}
+          path={"/menu1/Menu1Depth3"}
           element={
             <>
               <Nav1 path={path} setPath={setPath} testData={testData} />
               <Menu1_3 path={path} testData={testData} />
+            </>
+          }
+        />
+        <Route
+          path={"/menu1/Menu1Depth1/Menu1Depth21"}
+          element={
+            <>
+              <Nav1 path={path} setPath={setPath} testData={testData} />
+              <Menu1_1_1 path={path} testData={testData} />
+            </>
+          }
+        />
+        <Route
+          path={"/menu1/Menu1Depth1/Menu1Depth22"}
+          element={
+            <>
+              <Nav1 path={path} setPath={setPath} testData={testData} />
+              <Menu1_1_2 path={path} testData={testData} />
+            </>
+          }
+        />
+        <Route
+          path={"/menu1/Menu1Depth1/Menu1Depth23"}
+          element={
+            <>
+              <Nav1 path={path} setPath={setPath} testData={testData} />
+              <Menu1_1_1 path={path} testData={testData} />
             </>
           }
         />

@@ -21,7 +21,7 @@ const Menu1 = ({ path }) => {
   return (
     <ContentStyle>
       {/* <ContentPath>{pathText}</ContentPath> */}
-      <ContentPath>Menu1 - Menu1Nav2</ContentPath>
+      <ContentPath>Menu1 - Menu1Depth2</ContentPath>
       <ContentTitle>타이틀</ContentTitle>
       <ContentText>본문</ContentText>
     </ContentStyle>

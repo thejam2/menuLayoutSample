@@ -33,12 +33,15 @@ const Header = ({ setPath, testData }) => {
   const homeMatch = useMatch("/");
   let menuMatch = useMatch("/:menuNm");
   let menuMatch2 = useMatch("/:menuNm/:depth1");
+  let menuMatch3 = useMatch("/:menuNm/:depth1/:depth2");
 
   let match = "";
   if (menuMatch != null) {
     match = menuMatch.params.menuNm;
   } else if (menuMatch2 != null) {
     match = menuMatch2.params.menuNm;
+  } else if (menuMatch3 != null) {
+    match = menuMatch3.params.menuNm;
   }
 
   return (

@@ -34,13 +34,18 @@ const NavMenuDepth3 = styled(NavMenuDepth1)`
 `;
 
 const Nav1 = ({ path, setPath, testData }) => {
-  const depth1Sample = ["Menu1Nav1", "Menu1Nav2", "Menu1Nav3"];
+  const depth1Sample = ["Menu1Depth1", "Menu1Depth2", "Menu1Depth3"];
+  const depth2Sample = ["Menu1Depth21", "Menu1Depth22", "Menu1Depth23"];
+  //const [depth2State, setdepth2State] = useState(false);
   const navigate = useNavigate();
   let menuMatch = useMatch("/:menuNm/:depth1");
+  let menuMatch2 = useMatch("/:menuNm/:depth1/:depth2");
   let match = "";
 
   if (menuMatch) {
     match = menuMatch.params.depth1;
+  } else if (menuMatch2 != null) {
+    match = menuMatch2.params.depth2;
   }
 
   const navMenuClick = (e, name) => {
@@ -49,6 +54,16 @@ const Nav1 = ({ path, setPath, testData }) => {
     copy.push(name);
     setPath(copy);
     navigate("/menu1/" + name);
+    [...document.querySelectorAll("#" + name + " div")].map((v) =>
+      v.style.display === "block"
+        ? (v.style.display = "none")
+        : (v.style.display = "block")
+    );
+  };
+
+  const depth2Click = (e, name, depth2) => {
+    e.stopPropagation();
+    navigate("/menu1/" + name + "/" + depth2);
   };
 
   return (
@@ -57,13 +72,26 @@ const Nav1 = ({ path, setPath, testData }) => {
       <NavMenuList>
         {depth1Sample.map((v, i) => {
           return (
-            <NavMenuDepth1
-              key={i}
-              onClick={(e) => navMenuClick(e, v)}
-              style={match === v ? { color: "white" } : null}
-            >
-              {v}
-            </NavMenuDepth1>
+            <div key={i}>
+              <NavMenuDepth1
+                onClick={(e) => navMenuClick(e, v)}
+                style={match === v ? { color: "white" } : null}
+                id={v}
+              >
+                {v}
+                {depth2Sample.map((v2, i2) => {
+                  return (
+                    <NavMenuDepth2
+                      key={i2}
+                      style={match === v2 ? { display: "none", color: "white" } : { display: "none", color: "black" }}
+                      onClick={(e) => depth2Click(e, v, v2)}
+                    >
+                      {v2}
+                    </NavMenuDepth2>
+                  );
+                })}
+              </NavMenuDepth1>
+            </div>
           );
         })}
       </NavMenuList>
